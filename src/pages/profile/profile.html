@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="green">
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+	<form (submit)="doSignup()">
+    	<ion-list>
+	      	<ion-item>
+	        	<ion-label><ion-icon name="md-contact"></ion-icon></ion-label>
+	        	<ion-input type="text" [(ngModel)]="account.name" name="name" placeholder="Full name"></ion-input>
+	      	</ion-item>
+
+	      	<div class="item item-custom">
+	        	<ion-row>
+	          		<ion-col>
+	            		<ion-label>{{account.sex}}</ion-label>
+	            		<ion-toggle [(ngModel)]="account.sexStatus" name="sex" (ionChange)="changeSex(account.sexStatus)"></ion-toggle>
+	          		</ion-col>
+	          		<ion-col>
+	            		<ion-input type="tel" [(ngModel)]="account.age" name="age" placeholder="Age"></ion-input>
+	          		</ion-col>
+	        	</ion-row>
+	      	</div>
+			  
+			  <ion-item class="input-text upload-avatar" >
+	        	<button type="button" ion-button (click)="chooseAvatar()">Upload Avatar</button>
+	        	<img class="avatar-upload" style="height: 100px; width: 100px;" src="{{account.avatar}}" *ngIf="account.avatar"/>
+	        	<img class="avatar-upload" src="assets/img/marty-avatar.png" *ngIf="!account.avatar" />
+	      	</ion-item>
+
+	      	<ion-item class="input-text">
+	        	<ion-label><ion-icon name="md-call"></ion-icon></ion-label>
+	        	<ion-input type="tel" [(ngModel)]="account.phone" name="phone" placeholder="Phone"></ion-input>
+	      	</ion-item>
+
+	      	<ion-item class="input-text">
+	        	<ion-label><ion-icon name="md-bookmarks"></ion-icon></ion-label>
+	        	<ion-input type="text" [(ngModel)]="account.school" name="school" placeholder="School"></ion-input>
+	      	</ion-item>
+
+	      	<ion-item class="input-text">
+	        	<ion-label><ion-icon name="md-map"></ion-icon></ion-label>
+	        	<ion-input type="text" [(ngModel)]="account.address" name="address" placeholder="Address"></ion-input>
+	      	</ion-item>
+
+	      	<ion-item class="input-text">
+	        	<ion-textarea [(ngModel)]="account.description" row="6" name="description" placeholder="Description"></ion-textarea>
+	      	</ion-item>
+
+	      	<div padding>
+	        	<button ion-button color="primary" block (click)="updateProfile()">Update</button>
+	      	</div>
+
+	    	</ion-list>
+  	</form>
+</ion-content>

@@ -1,0 +1,58 @@
+
+.text-green {
+	color: color($colors, green) !important;
+}
+.text-primary {
+	color: color($colors, primary) !important;	
+}
+.clearfix {
+	clear: both;
+}
+
+ion-menu {
+	.menu-enabled{
+		display: block !important;
+	}
+	
+	ion-header {
+		background: color($colors, green) !important; 
+		img {
+			border-radius: 50%;
+			float: left;
+			margin: 6px;
+			height: 70px;
+		}
+		.name {
+			color: white;
+			font-size: 16px;
+			margin-bottom: 0;
+		}
+		.btn-edit {
+			color: white;
+		    display: inline-block;
+		    padding: 4px 6px;
+		}
+	}
+
+	.icon-menu {
+		height: 20px;
+	    position: relative;
+	    top: 4px;
+	    margin-right: 4px;
+	}
+	.label {
+		font-size: 15px;
+    	color: #313131;
+	}
+	.item-inner {
+		border: none !important;
+	}
+	.btn-phone {
+		display: inline-block;
+	    background: #44b48e;
+	    padding: 10px 20px;
+	    color: white;
+	    border-radius: 20px;
+	    margin-left: calc(50% - 60px);
+	}
+}

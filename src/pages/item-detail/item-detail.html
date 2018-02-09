@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar color="green">
+    <ion-title *ngIf="jobDetail">{{jobDetail.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content *ngIf="jobDetail">
+  <!-- <div class="item-profile" text-center #profilePic [style.background-image]="'url(' +  + ')'">
+  </div> -->
+
+  <div class="item-detail" padding>
+    <h2>{{jobDetail.workplace}}</h2>
+    <p class="date"><img src="assets/img/calendar.png"> {{jobDetail.date | date: 'dd/MM/yyyy'}}</p>
+    <p class="time"><img src="assets/img/clock.png"> {{jobDetail.timeFrom}} - {{jobDetail.timeTo}}</p>
+    <p class="phone"><img src="assets/img/phone.png"> {{jobDetail.phoneNumber}}</p>
+    <p class="price"><img src="assets/img/price.png"> {{jobDetail.price | number}}đ</p>
+    <p class="description">{{jobDetail.description}}</p>
+  </div>
+</ion-content>

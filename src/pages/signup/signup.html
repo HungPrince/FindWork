@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar color="green">
+    <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form (submit)="doSignup()">
+    <!-- <div class="logo" color="green">
+      <p>Student Work</p>
+      <img src="assets/img/student.png">
+    </div> -->
+    <ion-list>
+
+      <ion-item>
+        <ion-label><ion-icon name="md-contact"></ion-icon></ion-label>
+        <ion-input type="text" [(ngModel)]="account.name" name="name" placeholder="Full name"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item> -->
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-mail"></ion-icon></ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email" placeholder="Email"></ion-input>
+      </ion-item>
+
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-key"></ion-icon></ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password" placeholder="Password"></ion-input>
+      </ion-item>
+
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-key"></ion-icon></ion-label>
+        <ion-input type="password" [(ngModel)]="account.passwordConfirm" name="passwordConfirm" placeholder="Password confirm"></ion-input>
+      </ion-item>
+
+      <div class="item item-custom">
+        <ion-row>
+          <ion-col>
+            <ion-label>{{account.sex}}</ion-label>
+            <ion-toggle [(ngModel)]="account.sexStatus" name="sex" (ionChange)="changeSex(account.sexStatus)"></ion-toggle>
+          </ion-col>
+          <ion-col>
+            <ion-input type="tel" [(ngModel)]="account.age" name="age" placeholder="Age"></ion-input>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <ion-item id="upload-boxes" class="input-text">
+        <button style="margin-bottom: 30px;" type="button" ion-button (click)="chooseAvatar()">Upload Avatar</button>
+        <img class="avatar-upload" src="assets/img/marty-avatar.png" *ngIf="!account.avatar">
+        <img class="avatar-upload" style="height: 100px; width: 100px;" src="{{account.avatar}}" *ngIf="account.avatar">
+      </ion-item>
+
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-call"></ion-icon></ion-label>
+        <ion-input type="tel" [(ngModel)]="account.phone" name="phone" placeholder="Phone"></ion-input>
+      </ion-item>
+
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-bookmarks"></ion-icon></ion-label>
+        <ion-input type="text" [(ngModel)]="account.school" name="school" placeholder="School"></ion-input>
+      </ion-item>
+
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-map"></ion-icon></ion-label>
+        <ion-input type="text" [(ngModel)]="account.address" name="address" placeholder="Address"></ion-input>
+      </ion-item>
+
+      <ion-item class="input-text">
+        <ion-textarea [(ngModel)]="account.description" row="6" name="description" placeholder="Description"></ion-textarea>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>

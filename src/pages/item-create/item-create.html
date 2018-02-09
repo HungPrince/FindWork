@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'ITEM_CREATE_TITLE' | translate }}</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">
+        <span color="primary">
+          {{ 'CANCEL_BUTTON' | translate }}
+        </span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="createItem()" [disabled]="!isReadyToSave" strong>
+        <span color="primary">
+          {{ 'DONE_BUTTON' | translate }}
+        </span>
+        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
+    <!-- <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+    <div class="profile-image-wrapper" (click)="getPicture()">
+      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
+        <ion-icon name="add"></ion-icon>
+        <div>
+          {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
+        </div>
+      </div>
+      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
+    </div> -->
+    <ion-list>
+      <ion-item>
+        <ion-label>{{ 'ITEM_TITLE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ITEM_WORKPLACE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-input type="text" formControlName="workplace"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ITEM_WORKING_DAY_PLACEHOLDER' | translate }}</ion-label>
+        <ion-datetime displayFormat="DD MM YYYY" pickerFormat="DD MM YYYY" min="{{today}}" max="2020"  formControlName="date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ITEM_TIME_FROM_PLACEHOLDER' | translate }}</ion-label>
+        <ion-datetime displayFormat="HH:mm" formControlName="timeFrom"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ITEM_TIME_TO_PLACEHOLDER' | translate }}</ion-label>
+        <ion-datetime displayFormat="HH:mm" formControlName="timeTo"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ITEM_PRICE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-input type="tel" formControlName="price"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ITEM_PHONE_NUMBER_PLACEHOLDER' | translate }}</ion-label>
+        <ion-input type="tel" formControlName="phoneNumber"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ITEM_DESCRIPTION_PLACEHOLDER' | translate }}</ion-label>
+        <ion-textarea type="text" rows="4" cols="50" formControlName="description"></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

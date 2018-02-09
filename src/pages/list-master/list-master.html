@@ -1,0 +1,61 @@
+<ion-header>
+
+  <ion-navbar color="green">
+    <button ion-button menuToggle>
+      <ion-icon name="md-menu"></ion-icon>
+    </button>
+
+    <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addItem()">
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="searchJob()">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <!-- <button ion-button icon-only (click)="addItem()">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button> -->
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-list class="padding list-master">
+    <ion-item-sliding *ngFor="let item of currentJobs" class="item-master">
+      <div ion-item >
+        <div class="item-header">
+          <img src="assets/img/ian-avatar.png" class="avatar" *ngIf="!item.avatar" />
+          <img src="{{item.avatar}}" class="avatar" *ngIf="item.avatar"/>
+          <!-- <h2>{{item.title}}</h2> -->
+          <h2 class="user">{{item.postBy}}</h2>
+          <p class="time"><img src="assets/img/clock.png"> {{item.timeFrom}} - {{item.timeTo}}</p>
+          <p class="time"><img src="assets/img/calendar.png"> {{item.date}}</p>
+        </div>
+        <p class="price" *ngIf="item.price">{{item.price | number}}đ</p>
+        <div class="information">
+          <p><span class="text-primary">Adress: </span>{{item.workplace}}</p>
+          <p><span class="text-primary">Job: </span>{{item.title}}</p>
+        </div>
+        <div class="item-toolbar">
+          <button ion-button outline color="green" *ngIf="item.price">
+            No. selected: {{item.count}}
+          </button>
+          <button ion-button outline color="green" (click)="selectJob(item.key, item.count)" *ngIf="!item.selected">Select</button>
+          <button ion-button outline color="green" (click)="unSelectJob(item.key, item.count)" *ngIf="item.selected">Unselect</button>
+          <button ion-button outline color="green" (click)="openItem(item.key)">View More</button>
+        </div>
+        <!-- <p>Upload by{{}} at {{}}</p> -->
+      </div>
+
+      <!-- <ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options> -->
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

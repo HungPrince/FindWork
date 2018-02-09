@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="green">
+    <button ion-button menuToggle>
+      <ion-icon name="md-menu"></ion-icon>
+    </button>
+    <ion-title>
+      Manage Your Posts
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list class="padding list-master">
+    <ion-item-sliding *ngFor="let item of manageJobs" class="item-master">
+      <div ion-item>
+        <div class="item-header">
+          <img src="assets/img/ian-avatar.png" class="avatar" *ngIf="!userLocal.avatar" />
+          <img src="{{userLocal.avatar}}" class="avatar" *ngIf="userLocal.avatar" />
+          <h2 class="user">{{userLocal.name}}</h2>
+          <p class="time">
+            <img src="assets/img/clock.png"> {{item.timeFrom}} - {{item.timeTo}}</p>
+          <p class="time">
+            <img src="assets/img/calendar.png"> {{item.date}}</p>
+        </div>
+        <!-- <ion-avatar item-start>
+            <img [src]="item.profilePic" />
+          </ion-avatar> -->
+        <div class="information">
+          <p>
+            <span class="text-primary">Adress: </span>{{item.workplace}}</p>
+          <p>
+            <span class="text-primary">Job: </span>{{item.title}}</p>
+        </div>
+        <ion-note item-end *ngIf="item.price">
+            <p class="price" *ngIf="item.price">{{item.price | number}}đ</p>
+          <p>No. selected: {{item.count}}</p>
+          <a outline color="green" (click)="goListUser(item.key)">See more</a>
+        </ion-note>
+        <div class="item-toolbar">
+          <button ion-button outline color="green" (click)="editItem(item.key)">Edit</button>
+          <button ion-button outline color="green" (click)="openItem(item.key)">Detail job</button>
+        </div>
+      </div>
+
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item.key)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
